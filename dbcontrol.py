@@ -1,10 +1,11 @@
 #!coding:utf-8
 import plyvel
+import os
 
 
 class blogdb:
     def __init__(self):
-        self.db = plyvel.DB('./blogdb/', create_if_missing=True)
+        self.db = plyvel.DB(os.getcwd() + '/blogdb/', create_if_missing=True)
 
     def search(self, blogtitle):
         return self.db.get(str.encode(blogtitle))

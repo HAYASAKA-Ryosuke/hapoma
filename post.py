@@ -1,7 +1,6 @@
 #!coding:utf-8
 import configparser
 from requests_oauthlib import OAuth1Session
-import time
 
 
 class Post:

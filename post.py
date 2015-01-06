@@ -31,7 +31,6 @@ xmlns:app="http://www.w3.org/2007/app">\
 </entry>' % (title, body, updated.strftime("%Y-%m-%dT%H:%M:%S"))
         auth = OAuth1Session(self.oauth_consumer_key, self.oauth_consumer_secret, self.access_token, self.access_token_secret)
         if blog_id:
-            print(str(int(time.mktime(updated.timetuple()))))
             auth.put(self.rootendpoint + '/entry/' + blog_id, data=xmlbody)
         else:
             auth.post(self.rootendpoint + '/entry', data=xmlbody)

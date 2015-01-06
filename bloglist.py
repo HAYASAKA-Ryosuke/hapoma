@@ -16,11 +16,6 @@ class blogget:
 
     def getblog_all(self):
         auth = OAuth1Session(self.oauth_consumer_key, self.oauth_consumer_secret, self.access_token, self.access_token_secret)
-        res = auth.get('http://kuroneko0208.hatenablog.com/atom/entry')
-        print(res.text)
-
-    def getblog_recent(self):
-        auth = OAuth1Session(self.oauth_consumer_key, self.oauth_consumer_secret, self.access_token, self.access_token_secret)
         auth_res = auth.get('https://blog.hatena.ne.jp/kuroneko0208/kuroneko0208.hatenablog.com/atom/entry')
         listrow_id = filter(lambda x: x.find('<link rel="edit"') >= 0, auth_res.text.split('\n'))
         listrow_title = filter(lambda x: x.find('<title>') >= 0, auth_res.text.split('\n'))

@@ -12,6 +12,7 @@ if __name__ == '__main__':
     send = post.Post()
     blog = bloglist.blogget()
     res = None
+    body = open(postfile + '.md', encoding='utf-8').read()
 
     if not(glob.glob(os.getcwd() + '/blogdb/')):
         db = dbcontrol.blogdb()
@@ -20,7 +21,9 @@ if __name__ == '__main__':
         db = dbcontrol.blogdb()
         res = db.search(postfile)
     if res:
-        send.send(postfile, 'ok', datetime.datetime.now(), res.decode('utf-8'))
+        send.send(postfile, body, datetime.datetime.now(), res.decode('utf-8'))
     else:
-        send.send(postfile, 'okk', datetime.datetime.now())
+        print(postfile)
+        print(body)
+        send.send(postfile, body, datetime.datetime.now())
         [db.write(x[0], x[1]) for x in blog.getblog_all()]

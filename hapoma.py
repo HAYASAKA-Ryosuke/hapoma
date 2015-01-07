@@ -23,7 +23,5 @@ if __name__ == '__main__':
     if res:
         send.send(postfile, body, datetime.datetime.now(), res.decode('utf-8'))
     else:
-        print(postfile)
-        print(body)
         send.send(postfile, body, datetime.datetime.now())
         [db.write(x[0], x[1]) for x in blog.getblog_all()]
